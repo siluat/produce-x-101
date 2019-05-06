@@ -44,10 +44,10 @@ class App extends Component {
                 <Dropdown.Menu >
                   <Dropdown.Item href='/dear101'>
                     Dear 101 후원 순위
-              </Dropdown.Item>
-                  <Dropdown.Item href='/X1_MA'>
-                    _지마 직캠 순위
-                </Dropdown.Item>
+                  </Dropdown.Item>
+                  <Dropdown.Item href='/changelog'>
+                    업데이트 기록
+                  </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </Menu>
