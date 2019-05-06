@@ -4,7 +4,7 @@ import moment from 'moment';
 import { Icon, Label, Segment } from 'semantic-ui-react';
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis } from 'recharts';
 
-const MAIN_PICTURE_PATH = '/images/mainPictures/';
+const MAIN_PICTURE_PATH = '/images/mainPictures/144px/';
 
 const TraineeContainer = styled.div`
   background-color: '#f6f6f6';
