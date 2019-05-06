@@ -17,8 +17,8 @@ const Copyright = styled.p`
 const Footer = () =>
   <Message attached='bottom'>
     <Contact><Icon name='mail' />pick.the.nako@gmail.com</Contact>
-    <Copyright>&copy; 2019, Pick the Nako. ALL RIGHTS RESERVED.</Copyright>
-    <Copyright>&copy; GENIE MUSIC CORP ALL RIGHTS RESERVED.</Copyright>
+    <Copyright>&copy; 2019, Pick the Nako. All Rights Reserved.</Copyright>
+    <Copyright>&copy; CJ ENM. Corp All Rights Reserved.</Copyright>
   </Message>
 
 export default Footer;
