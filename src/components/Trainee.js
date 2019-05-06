@@ -212,13 +212,13 @@ const TraineeLabel = ({
           </a>
         : null
     }
-    {/* {
+    {
       (stepUpToday)
         ? <Label basic pointing='left' size='mini'>
             오늘 상승!    
           </Label>
         : null
-    } */}
+    }
   </TraineeLabelContainer>
 
 export default Trainee;
