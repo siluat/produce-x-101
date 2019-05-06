@@ -4,7 +4,7 @@ const documentClient = new AWS.DynamoDB.DocumentClient({region: 'ap-northeast-2'
 const sns = new AWS.SNS({region: 'ap-northeast-2'});
 
 const DB_TABLE_NAME = 'produce-x-101';
-const AWS_SNS_TARGET_ARN = 'arn:aws:sns:ap-northeast-2:876863305772:toSlack';
+const AWS_SNS_TARGET_ARN = 'arn:aws:sns:ap-northeast-2:876863305772:produce-x-101';
 
 const params = {
   TableName : DB_TABLE_NAME,

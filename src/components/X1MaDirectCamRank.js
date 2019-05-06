@@ -117,7 +117,7 @@ class x1maDirectCamRanking extends Component {
           style={{ textAlign: 'center' }}
           attached
           header='_지마 직캠 순위'
-          content=''
+          content='5분마다 최신 정보로 업데이트됩니다.'
         />
         <Sticky context={contextRef} offset={40}>
           <MenuBar
