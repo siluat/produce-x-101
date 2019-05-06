@@ -5,6 +5,7 @@ import { Menu, Sticky, Dropdown } from 'semantic-ui-react';
 
 import Footer from './components/Footer';
 import Dear101 from './components/Dear101';
+import X1MaDirectCamRank from './components/X1MaDirectCamRank';
 import ChangeLog from './components/ChangeLog';
 
 import './styles/important.css';
@@ -45,6 +46,9 @@ class App extends Component {
                   <Dropdown.Item href='/dear101'>
                     Dear 101 후원 순위
                   </Dropdown.Item>
+                  <Dropdown.Item href='/x1ma'>
+                    _지마 직캠 항목별 순위
+                  </Dropdown.Item>
                   <Dropdown.Item href='/changelog'>
                     업데이트 기록
                   </Dropdown.Item>
@@ -60,6 +64,10 @@ class App extends Component {
             <Route 
               exact path="/dear101"
               render={(props) => <Dear101 {...props} />}
+            />
+            <Route 
+              exact path="/x1ma"
+              render={(props) => <X1MaDirectCamRank {...props} />}
             />
             <Route
               exaxt path="/changelog"

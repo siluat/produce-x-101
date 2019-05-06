@@ -3,8 +3,8 @@ body {
   background-color: #f6f6f6;
 }
 
-.ui.pink.inverted.progress .bar {
-  background-color: #ff50a0;
+.ui.blue.inverted.progress .bar {
+  background-color: #013DFD;
   height: 30px;
 }
 
@@ -20,12 +20,12 @@ body {
   z-index: 999;
 }
 
-.ui.menu .pink.active.item {
-  border-color: #ff50a0!important;
-  color: #ff50a0!important;
+.ui.menu .blue.active.item {
+  border-color: #013DFD!important;
+  color: #013DFD!important;
 }
 
-.ui.pink.label {
-  background-color: #ff50a0!important;
-  border-color: #ff50a0!important;
+.ui.blue.label {
+  background-color: #013DFD!important;
+  border-color: #013DFD!important;
 }

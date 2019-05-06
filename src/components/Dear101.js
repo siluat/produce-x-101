@@ -152,7 +152,7 @@ class Dear101 extends Component {
         <Message
           style={{ textAlign: 'center' }}
           attached
-          header="Dear 101 후원 랭크"
+          header="Dear 101 후원 순위"
           content="매일 자정에 업데이트됩니다."
         />
         { isLoading
