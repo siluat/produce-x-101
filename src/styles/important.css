@@ -1,0 +1,31 @@
+body {
+  font-family: Verdana, Roboto, "Droid Sans", "MS PGothic", sans-serif;
+  background-color: #f6f6f6;
+}
+
+.ui.pink.inverted.progress .bar {
+  background-color: #ff50a0;
+  height: 30px;
+}
+
+.ui.progress .bar>.progress {
+  font-size: 1em;
+}
+
+.ui.inverted.menu {
+  background-color: #666;
+}
+
+.top-menu .ui.fixed.top.sticky {
+  z-index: 999;
+}
+
+.ui.menu .pink.active.item {
+  border-color: #ff50a0!important;
+  color: #ff50a0!important;
+}
+
+.ui.pink.label {
+  background-color: #ff50a0!important;
+  border-color: #ff50a0!important;
+}
