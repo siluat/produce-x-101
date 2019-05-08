@@ -16,6 +16,7 @@
     "moment": "^2.24.0",
     "puppeteer": "^1.15.0",
     "react": "^16.8.6",
+    "react-app-polyfill": "^1.0.0",
     "react-dom": "^16.8.6",
     "react-flip-move": "^3.0.3",
     "react-ga": "^2.5.7",
