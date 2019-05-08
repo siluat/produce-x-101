@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactGA from 'react-ga';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import { Menu, Sticky, Dropdown } from 'semantic-ui-react';
+import i18n from './components/i18n';
+import { withNamespaces } from 'react-i18next';
 
 import Footer from './components/Footer';
 import Dear101 from './components/Dear101';
@@ -26,23 +28,53 @@ class App extends Component {
 
   render() {
     const { contextRef } = this.state;
+    const { t, i18n } = this.props;
 
     return (
       <Router>
         <div ref={this.handleContextRef}>
           <Sticky context={contextRef} className="top-menu">
             <Menu attached inverted>
-              <Dropdown style={{ width: '100%' }} item text="메뉴">
+              <Dropdown style={{ width: '70%' }} item text={t('menuLabel')}>
                 <Dropdown.Menu>
                   <Dropdown.Item href="/dear101">
-                    Dear 101 후원 순위
+                    {t('menu.dear101')}
                   </Dropdown.Item>
-                  <Dropdown.Item href="/x1ma">
-                    _지마 직캠 항목별 순위
+                  <Dropdown.Item href="/x1ma">{t('menu.x1ma')}</Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item href="/changelog">
+                    {t('menu.changelog')}
                   </Dropdown.Item>
-                  <Dropdown.Item href="/changelog">업데이트 기록</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
+              <Menu.Item
+                as="a"
+                style={{
+                  width: '15%',
+                  display: 'inline-block',
+                  textAlign: 'center',
+                }}
+                onClick={() => {
+                  i18n.changeLanguage('kr');
+                }}
+                active={i18n.language === 'kr'}
+              >
+                KR
+              </Menu.Item>
+              <Menu.Item
+                as="a"
+                style={{
+                  width: '15%',
+                  display: 'inline-block',
+                  textAlign: 'center',
+                }}
+                onClick={() => {
+                  i18n.changeLanguage('en');
+                }}
+                active={i18n.language === 'en'}
+              >
+                EN
+              </Menu.Item>
             </Menu>
           </Sticky>
           <Switch>
@@ -66,4 +98,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withNamespaces('translation')(App);

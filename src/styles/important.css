@@ -1,6 +1,5 @@
 body {
   font-family: Verdana, Roboto, 'Droid Sans', 'MS PGothic', sans-serif;
-  background-color: #f6f6f6;
 }
 
 .ui.blue.inverted.progress .bar {
@@ -10,10 +9,6 @@ body {
 
 .ui.progress .bar > .progress {
   font-size: 1em;
-}
-
-.ui.inverted.menu {
-  background-color: #666;
 }
 
 .top-menu .ui.fixed.top.sticky {
@@ -28,4 +23,12 @@ body {
 .ui.blue.label {
   background-color: #013dfd !important;
   border-color: #013dfd !important;
+}
+
+#root {
+  max-width: 1024px;
+  margin: auto;
+  background-color: #f6f6f6;
+  border-left: 1px solid rgba(34, 36, 38, 0.1);
+  border-right: 1px solid rgba(34, 36, 38, 0.1);
 }

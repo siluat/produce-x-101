@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Icon, Message, Menu, Sticky } from 'semantic-ui-react';
 import { chain, find } from 'lodash';
 import FlipMove from 'react-flip-move';
+import { withNamespaces } from 'react-i18next';
 
 import LoadingContent from './LoadingContent';
 import Trainee from './Trainee';
@@ -85,18 +86,13 @@ class Dear101 extends Component {
     data.forEach(item => {
       let name;
 
-      // switch (this.props.i18n.language) {
-      //   case 'jp':
-      //     name = item.nameInJapanese;
-      //     break;
-      //   case 'en':
-      //     name = item.nameInEnglish;
-      //     break;
-      //   default:
-      //     name = item.name;
-      // }
-
-      name = item.name;
+      switch (this.props.i18n.language) {
+        case 'en':
+          name = item.nameInEnglish;
+          break;
+        default:
+          name = item.name;
+      }
 
       selection.push({
         value: item.id,
@@ -154,8 +150,8 @@ class Dear101 extends Component {
         <Message
           style={{ textAlign: 'center' }}
           attached
-          header="Dear 101 후원 순위"
-          content="매일 자정에 업데이트됩니다."
+          header={t('menu.dear101')}
+          content={t('update.everyMidnight')}
         />
         {isLoading ? (
           <LoadingContent />
@@ -164,7 +160,7 @@ class Dear101 extends Component {
             <Select
               style={{ zIndex: 900 }}
               isMulti
-              placeholder="이름"
+              placeholder={t('namePlaceHolder')}
               closeMenuOnSelect={false}
               value={traineeSelected}
               options={traineeSelection}
@@ -175,14 +171,11 @@ class Dear101 extends Component {
                 return (
                   <div key={trainee.id}>
                     <Trainee
-                      i18n={i18n}
-                      t={t}
                       trainee={trainee}
                       dear101idx={trainee.dear101idx}
                       dearHugStepLastDate={trainee.dearHugStepLastDate}
                     >
                       <Dear101Data
-                        t={t}
                         selectedMenu={selectedMenu}
                         retired={trainee.retired}
                         dearHugRate={trainee.dearHugRate}
@@ -209,4 +202,4 @@ class Dear101 extends Component {
   }
 }
 
-export default Dear101;
+export default withNamespaces('translation')(Dear101);

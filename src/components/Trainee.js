@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import moment from 'moment';
 import { Icon, Label, Segment } from 'semantic-ui-react';
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis } from 'recharts';
+import { withNamespaces } from 'react-i18next';
 
 const MAIN_PICTURE_PATH = '/images/mainPictures/144px/';
 
@@ -89,9 +90,7 @@ class Trainee extends Component {
           i18n={i18n}
           t={t}
           traineeId={trainee.id}
-          name={
-            usePunchName && trainee.punchName ? trainee.punchName : trainee.name
-          }
+          name={trainee.name}
           nameInJapanese={trainee.nameInJapanese}
           nameInEnglish={trainee.nameInEnglish}
           lastRank={trainee.lastRank || 0}
@@ -186,7 +185,8 @@ const TraineeLabel = ({
 }) => (
   <TraineeLabelContainer>
     <TraineeRank>{lastRank}</TraineeRank>
-    <TraineeName>{name}</TraineeName>
+    {i18n.language !== 'en' && <TraineeName>{name}</TraineeName>}
+    {i18n.language === 'en' && <TraineeName>{nameInEnglish}</TraineeName>}
     {videoLink ? (
       <a onClick={preventEventPropagation} href={videoLink} target="_blank">
         <Icon name="video play" />
@@ -234,10 +234,10 @@ const TraineeLabel = ({
     ) : null}
     {stepUpToday ? (
       <Label basic pointing="left" size="mini">
-        오늘 상승!
+        {t('dear101.upToday')}
       </Label>
     ) : null}
   </TraineeLabelContainer>
 );
 
-export default Trainee;
+export default withNamespaces('translation')(Trainee);

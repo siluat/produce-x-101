@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
 import moment from 'moment';
+import { withNamespaces } from 'react-i18next';
 
 const VideoLink = styled.a`
   color: #fff;
@@ -31,7 +32,7 @@ const DearStepBar = styled.div`
   background-color: ${props => (props.retired ? '#ff50a0' : '#013DFD')};
   transition: width 0.6s ease;
   box-sizing: border-box;
-  font-size: 0.89rem;
+  font-size: 0.86rem;
   font-weight: bold;
   &:not(:last-child) {
     border-right: 0.1px solid #fff;
@@ -77,7 +78,7 @@ const Dear101Data = ({
                 </span>
               );
             default:
-              return <span>{'1단계'}</span>;
+              return <span>{t('dear101.step', { value: 1 })}</span>;
           }
         })()}
       </DearStepBar>
@@ -106,7 +107,7 @@ const Dear101Data = ({
                 </span>
               );
             default:
-              return <span>{'2단계'}</span>;
+              return <span>{t('dear101.step', { value: 2 })}</span>;
           }
         })()}
       </DearStepBar>
@@ -138,7 +139,7 @@ const Dear101Data = ({
                 </span>
               );
             default:
-              return <span>{'3단계'}</span>;
+              return <span>{t('dear101.step', { value: 3 })}</span>;
           }
         })()}
       </DearStepBar>
@@ -170,7 +171,7 @@ const Dear101Data = ({
                 </span>
               );
             default:
-              return <span>{'4단계'}</span>;
+              return <span>{t('dear101.step', { value: 4 })}</span>;
           }
         })()}
       </DearStepBar>
@@ -202,7 +203,7 @@ const Dear101Data = ({
                 </span>
               );
             default:
-              return <span>{'5단계'}</span>;
+              return <span>{t('dear101.step', { value: 5 })}</span>;
           }
         })()}
       </DearStepBar>
@@ -219,4 +220,4 @@ const DearStepProgress = ({ children }) => (
   <DearStepProgressContainer>{children}</DearStepProgressContainer>
 );
 
-export default Dear101Data;
+export default withNamespaces('translation')(Dear101Data);

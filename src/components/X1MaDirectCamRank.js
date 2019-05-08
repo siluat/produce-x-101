@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Icon, Menu, Message, Sticky } from 'semantic-ui-react';
 import { sortBy, maxBy } from 'lodash';
 import FlipMove from 'react-flip-move';
+import { withNamespaces } from 'react-i18next';
+
 import LoadingContent from './LoadingContent';
 import Trainee from './Trainee';
 import ProgressBar from './ProgressBar';
@@ -20,7 +22,7 @@ const positionFilter = item => {
   return item.x1maDirectCamUrl;
 };
 
-class x1maDirectCamRanking extends Component {
+class X1maDirectCamRanking extends Component {
   constructor(props) {
     super(props);
 
@@ -118,8 +120,8 @@ class x1maDirectCamRanking extends Component {
         <Message
           style={{ textAlign: 'center' }}
           attached
-          header="_지마 직캠 순위"
-          content="5분마다 최신 정보로 업데이트됩니다."
+          header={t('menu.x1ma')}
+          content={t('update.every10Minutes')}
         />
         <Sticky context={contextRef} offset={40}>
           <MenuBar
@@ -152,8 +154,6 @@ class x1maDirectCamRanking extends Component {
               return (
                 <div key={trainee.id}>
                   <Trainee
-                    i18n={i18n}
-                    t={t}
                     trainee={trainee}
                     videoLink={trainee.x1maDirectCamUrl}
                   >
@@ -180,7 +180,7 @@ const MenuBar = ({
   onClickView,
   onClickComment,
 }) => (
-  <Menu icon="labeled" attached fluid widths={3}>
+  <Menu icon="labeled" attached widths={3}>
     <Menu.Item
       name="like"
       active={activeItem === 'like'}
@@ -188,7 +188,7 @@ const MenuBar = ({
       color="blue"
     >
       <Icon name="like" />
-      하트
+      {t('heart')}
     </Menu.Item>
     <Menu.Item
       name="play"
@@ -197,7 +197,7 @@ const MenuBar = ({
       color="blue"
     >
       <Icon name="play" />
-      조회수
+      {t('playCount')}
     </Menu.Item>
     <Menu.Item
       name="comment"
@@ -206,9 +206,9 @@ const MenuBar = ({
       color="blue"
     >
       <Icon name="comment" />
-      댓글
+      {t('comments')}
     </Menu.Item>
   </Menu>
 );
 
-export default x1maDirectCamRanking;
+export default withNamespaces('translation')(X1maDirectCamRanking);
