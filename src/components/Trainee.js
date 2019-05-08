@@ -11,24 +11,24 @@ const TraineeContainer = styled.div`
   position: relative;
   padding: 10px;
   min-height: 100px;
-`
+`;
 
 const TraineePictureContainer = styled.div`
   position: absolute;
-`
+`;
 
 const TraineePictureMask = styled.span`
   position: absolute;
   width: 72px;
   height: 72px;
   background: url('/images/mask_line72.png') 0 0 no-repeat;
-`
+`;
 
 const TraineePictureImage = styled.img`
   width: 72px;
   height: 72px;
   z-index: -10;
-`
+`;
 
 const TraineeDescriptionContainer = styled.div`
   display: inline-block;
@@ -37,29 +37,29 @@ const TraineeDescriptionContainer = styled.div`
   vertical-align: top;
   height: 72px;
   width: 100%;
-`
+`;
 
 const TraineeLabelContainer = styled.div`
   vertical-align: top;
   padding-bottom: 5px;
-`
+`;
 
 const TraineeRank = styled.span`
   font-weight: bold;
-  color: #013DFD;
+  color: #013dfd;
   :last-child {
     margin-left: -5px;
   }
-`
+`;
 
 const TraineeName = styled.span`
   font-weight: bold;
   padding: 0 5px;
-`
+`;
 
 const RankChartContainer = styled.div`
   margin-top: 10px;
-`
+`;
 
 class Trainee extends Component {
   constructor(props) {
@@ -79,17 +79,19 @@ class Trainee extends Component {
       videoFacebookLink,
       usePunchName,
       disableRankChart,
-      children 
+      children,
     } = this.props;
 
     return (
       <TraineeContainer>
-        <TraineePicture id={trainee.id} name={trainee.name}/>
+        <TraineePicture id={trainee.id} name={trainee.name} />
         <TraineeDescription
           i18n={i18n}
           t={t}
           traineeId={trainee.id}
-          name={(usePunchName && trainee.punchName) ? trainee.punchName : trainee.name}
+          name={
+            usePunchName && trainee.punchName ? trainee.punchName : trainee.name
+          }
           nameInJapanese={trainee.nameInJapanese}
           nameInEnglish={trainee.nameInEnglish}
           lastRank={trainee.lastRank || 0}
@@ -98,7 +100,14 @@ class Trainee extends Component {
           videoInstaLink={videoInstaLink}
           videoFacebookLink={videoFacebookLink}
           dear101Link={dear101idx}
-          stepUpToday={(dearHugStepLastDate === moment().utcOffset(9).format('YYYY-MM-DD') ? true : false) }
+          stepUpToday={
+            dearHugStepLastDate ===
+            moment()
+              .utcOffset(9)
+              .format('YYYY-MM-DD')
+              ? true
+              : false
+          }
           preventEventPropagation={this.preventEventPropagation}
           children={children}
         />
@@ -107,21 +116,21 @@ class Trainee extends Component {
   }
 }
 
-const CustomizedRankLabel = ({ x, y, stroke, value, t }) =>
+const CustomizedRankLabel = ({ x, y, stroke, value, t }) => (
   <text x={x} y={y} dy={-10} fill={stroke} fontSize={12} textAnchor="middle">
-    {value}{t('rank')}
+    {value}
+    {t('rank')}
   </text>
+);
 
-const TraineePicture = ({ id, name }) =>
+const TraineePicture = ({ id, name }) => (
   <TraineePictureContainer>
     <TraineePictureMask />
-    <TraineePictureImage
-      alt={name}
-      src={MAIN_PICTURE_PATH + id + '.jpg'}
-    />
+    <TraineePictureImage alt={name} src={MAIN_PICTURE_PATH + id + '.jpg'} />
   </TraineePictureContainer>
+);
 
-const TraineeDescription = ({ 
+const TraineeDescription = ({
   i18n,
   t,
   traineeId,
@@ -136,8 +145,8 @@ const TraineeDescription = ({
   dear101Link,
   stepUpToday,
   preventEventPropagation,
-  children
-}) =>
+  children,
+}) => (
   <TraineeDescriptionContainer>
     <TraineeLabel
       i18n={i18n}
@@ -157,6 +166,7 @@ const TraineeDescription = ({
     />
     {children}
   </TraineeDescriptionContainer>
+);
 
 const TraineeLabel = ({
   i18n,
@@ -170,55 +180,64 @@ const TraineeLabel = ({
   videoTwitterLink,
   videoInstaLink,
   videoFacebookLink,
-  dear101Link, 
+  dear101Link,
   stepUpToday,
-  preventEventPropagation
-}) =>
+  preventEventPropagation,
+}) => (
   <TraineeLabelContainer>
     <TraineeRank>{lastRank}</TraineeRank>
     <TraineeName>{name}</TraineeName>
-    {
-      (videoLink)
-        ? <a onClick={preventEventPropagation} href={videoLink} target="_blank">
-            <Icon name='video play'/>
-          </a>
-       : null
-    }
-    {
-      (videoTwitterLink)
-        ? <a onClick={preventEventPropagation} href={videoTwitterLink} target="_blank">
-            <Icon name='twitter'/>
-          </a>
-       : null
-    }
-    {
-      (videoInstaLink)
-        ? <a onClick={preventEventPropagation} href={videoInstaLink} target="_blank">
-            <Icon name='instagram'/>
-          </a>
-       : null
-    }
-    {
-      (videoFacebookLink)
-        ? <a onClick={preventEventPropagation} href={videoFacebookLink} target="_blank">
-            <Icon name='facebook'/>
-          </a>
-       : null
-    }
-    {
-      (dear101Link) 
-        ? <a onClick={preventEventPropagation} href={'https://www.dear101.com/x101_detail.php?idx=' + dear101Link + '&cate=hug'} target="_blank">
-            <Icon name='external'/>
-          </a>
-        : null
-    }
-    {
-      (stepUpToday)
-        ? <Label basic pointing='left' size='mini'>
-            오늘 상승!    
-          </Label>
-        : null
-    }
+    {videoLink ? (
+      <a onClick={preventEventPropagation} href={videoLink} target="_blank">
+        <Icon name="video play" />
+      </a>
+    ) : null}
+    {videoTwitterLink ? (
+      <a
+        onClick={preventEventPropagation}
+        href={videoTwitterLink}
+        target="_blank"
+      >
+        <Icon name="twitter" />
+      </a>
+    ) : null}
+    {videoInstaLink ? (
+      <a
+        onClick={preventEventPropagation}
+        href={videoInstaLink}
+        target="_blank"
+      >
+        <Icon name="instagram" />
+      </a>
+    ) : null}
+    {videoFacebookLink ? (
+      <a
+        onClick={preventEventPropagation}
+        href={videoFacebookLink}
+        target="_blank"
+      >
+        <Icon name="facebook" />
+      </a>
+    ) : null}
+    {dear101Link ? (
+      <a
+        onClick={preventEventPropagation}
+        href={
+          'https://www.dear101.com/x101_detail.php?idx=' +
+          dear101Link +
+          '&cate=hug'
+        }
+        target="_blank"
+      >
+        <Icon name="external" />
+      </a>
+    ) : null}
+    {stepUpToday ? (
+      <Label basic pointing="left" size="mini">
+        오늘 상승!
+      </Label>
+    ) : null}
   </TraineeLabelContainer>
+);
 
 export default Trainee;

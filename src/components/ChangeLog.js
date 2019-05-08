@@ -1,9 +1,9 @@
 import React from 'react';
 import { Header, Segment, List } from 'semantic-ui-react';
 
-const ChangeLog = () =>
+const ChangeLog = () => (
   <div>
-    <Header as='h2' attached='top'>
+    <Header as="h2" attached="top">
       2019-05-07
     </Header>
     <Segment attached>
@@ -14,5 +14,6 @@ const ChangeLog = () =>
       </List>
     </Segment>
   </div>
+);
 
 export default ChangeLog;

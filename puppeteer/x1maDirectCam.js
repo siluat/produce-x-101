@@ -1,13 +1,16 @@
 const puppeteer = require('puppeteer');
 const AWS = require('aws-sdk');
-const documentClient = new AWS.DynamoDB.DocumentClient({region: 'ap-northeast-2'});
-const sns = new AWS.SNS({region: 'ap-northeast-2'});
+const documentClient = new AWS.DynamoDB.DocumentClient({
+  region: 'ap-northeast-2',
+});
+const sns = new AWS.SNS({ region: 'ap-northeast-2' });
 
 const DB_TABLE_NAME = 'produce-x-101';
-const AWS_SNS_TARGET_ARN = 'arn:aws:sns:ap-northeast-2:876863305772:produce-x-101';
+const AWS_SNS_TARGET_ARN =
+  'arn:aws:sns:ap-northeast-2:876863305772:produce-x-101';
 
 const params = {
-  TableName : DB_TABLE_NAME,
+  TableName: DB_TABLE_NAME,
 };
 
 process.on('unhandledRejection', error => {
@@ -15,12 +18,12 @@ process.on('unhandledRejection', error => {
 
   const params = {
     Message: message,
-    TargetArn: AWS_SNS_TARGET_ARN
+    TargetArn: AWS_SNS_TARGET_ARN,
   };
 
   sns.publish(params, (err, data) => {
-    if (err)  console.log(err, err.stack);
-    else      console.log(data);
+    if (err) console.log(err, err.stack);
+    else console.log(data);
 
     process.exit();
   });
@@ -47,7 +50,7 @@ const crawling = async items => {
       continue;
     }
 
-    await page.goto(item.x1maDirectCamUrl,  {waitUntil: 'networkidle2'});
+    await page.goto(item.x1maDirectCamUrl, { waitUntil: 'networkidle2' });
 
     const primeSelector = '.u_cnt._cnt';
     await page.waitForSelector(primeSelector);
@@ -61,7 +64,7 @@ const crawling = async items => {
       name: item.name,
       view: viewCount,
       like: likeCount,
-      comment: commentCount
+      comment: commentCount,
     });
   }
 
@@ -94,17 +97,17 @@ function store(item) {
   const params = {
     TableName: DB_TABLE_NAME,
     Key: {
-      id: item.id
+      id: item.id,
     },
     UpdateExpression: 'set x1maView = :nv, x1maLike = :nl, x1maComment = :nc',
     ExpressionAttributeValues: {
       ':nv': item.view,
       ':nl': item.like,
-      ':nc': item.comment
-    }
+      ':nc': item.comment,
+    },
   };
 
-  console.info('Store ' + item.name + '\'s data...');
+  console.info('Store ' + item.name + "'s data...");
 
   documentClient.update(params, (err, data) => {
     if (err) {
@@ -113,20 +116,20 @@ function store(item) {
       process.exit();
     }
   });
-};
+}
 
 const reportComplete = async () => {
   var message = '프로듀스 X 101 _지마 직캠 영상 관련 정보를 업데이트 했습니다.';
 
   var params = {
     Message: message,
-    TargetArn: AWS_SNS_TARGET_ARN
+    TargetArn: AWS_SNS_TARGET_ARN,
   };
 
   for (var i = 0; i < 1; i++) {
     sns.publish(params, function(err, data) {
-      if (err)  console.log(err, err.stack);
-      else      console.log(data);
+      if (err) console.log(err, err.stack);
+      else console.log(data);
     });
   }
 };

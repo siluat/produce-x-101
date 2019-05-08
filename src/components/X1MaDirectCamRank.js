@@ -7,17 +7,18 @@ import LoadingContent from './LoadingContent';
 import Trainee from './Trainee';
 import ProgressBar from './ProgressBar';
 
-const PATH_FETCH = 'https://7orvtlfpoh.execute-api.ap-northeast-2.amazonaws.com/default/scan-produce-x-101';
+const PATH_FETCH =
+  'https://7orvtlfpoh.execute-api.ap-northeast-2.amazonaws.com/default/scan-produce-x-101';
 
 const SORTS = {
   LIKE: list => sortBy(list, 'x1maLike').reverse(),
   VIEW: list => sortBy(list, 'x1maView').reverse(),
-  COMMENT: list => sortBy(list, 'x1maComment').reverse()
-}
+  COMMENT: list => sortBy(list, 'x1maComment').reverse(),
+};
 
 const positionFilter = item => {
   return item.x1maDirectCamUrl;
-}
+};
 
 class x1maDirectCamRanking extends Component {
   constructor(props) {
@@ -47,17 +48,21 @@ class x1maDirectCamRanking extends Component {
   }
 
   componentDidUpdate() {
-    const progresses = document.querySelectorAll('.bar .progress, .outer-value');
+    const progresses = document.querySelectorAll(
+      '.bar .progress, .outer-value',
+    );
 
     for (let i = 0; i < progresses.length; i++) {
       let t = progresses[i].textContent;
-      progresses[i].textContent = t.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      progresses[i].textContent = t
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
   }
 
   fetchTraineeData() {
     this.setState({ isLoading: true });
-    
+
     axios(`${PATH_FETCH}`)
       .then(result => this.setTraineeData(result.data))
       .catch(error => this.setState({ error }));
@@ -94,10 +99,7 @@ class x1maDirectCamRanking extends Component {
   handleContextRef = contextRef => this.setState({ contextRef });
 
   render() {
-    const {
-      i18n,
-      t
-    } = this.props;
+    const { i18n, t } = this.props;
 
     const {
       traineeData,
@@ -108,7 +110,7 @@ class x1maDirectCamRanking extends Component {
       maxComment,
       isLoading,
       indicating,
-      contextRef
+      contextRef,
     } = this.state;
 
     return (
@@ -116,8 +118,8 @@ class x1maDirectCamRanking extends Component {
         <Message
           style={{ textAlign: 'center' }}
           attached
-          header='_지마 직캠 순위'
-          content='5분마다 최신 정보로 업데이트됩니다.'
+          header="_지마 직캠 순위"
+          content="5분마다 최신 정보로 업데이트됩니다."
         />
         <Sticky context={contextRef} offset={40}>
           <MenuBar
@@ -128,9 +130,10 @@ class x1maDirectCamRanking extends Component {
             onClickComment={this.onClickComment}
           />
         </Sticky>
-        { isLoading
-          ? <LoadingContent />
-          : <FlipMove>
+        {isLoading ? (
+          <LoadingContent />
+        ) : (
+          <FlipMove>
             {SORTS[sortKey](traineeData.filter(positionFilter)).map(trainee => {
               let value, max;
               switch (sortKey) {
@@ -154,15 +157,19 @@ class x1maDirectCamRanking extends Component {
                     trainee={trainee}
                     videoLink={trainee.x1maDirectCamUrl}
                   >
-                    <ProgressBar value={value} max={max} indicating={indicating} />
+                    <ProgressBar
+                      value={value}
+                      max={max}
+                      indicating={indicating}
+                    />
                   </Trainee>
                 </div>
-              )})
-            }
+              );
+            })}
           </FlipMove>
-        }
+        )}
       </div>
-    )
+    );
   }
 }
 
@@ -172,35 +179,36 @@ const MenuBar = ({
   onClickLike,
   onClickView,
   onClickComment,
-}) =>
-  <Menu icon='labeled' attached fluid widths={3}>
+}) => (
+  <Menu icon="labeled" attached fluid widths={3}>
     <Menu.Item
-      name='like'
+      name="like"
       active={activeItem === 'like'}
       onClick={onClickLike}
-      color='blue'
+      color="blue"
     >
-      <Icon name='like' />
+      <Icon name="like" />
       하트
     </Menu.Item>
     <Menu.Item
-      name='play'
+      name="play"
       active={activeItem === 'view'}
       onClick={onClickView}
-      color='blue'
+      color="blue"
     >
-      <Icon name='play' />
+      <Icon name="play" />
       조회수
     </Menu.Item>
     <Menu.Item
-      name='comment'
+      name="comment"
       active={activeItem === 'comment'}
       onClick={onClickComment}
-      color='blue'
+      color="blue"
     >
-      <Icon name='comment' />
+      <Icon name="comment" />
       댓글
     </Menu.Item>
   </Menu>
+);
 
 export default x1maDirectCamRanking;

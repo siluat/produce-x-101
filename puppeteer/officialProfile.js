@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const download = require('download-file');
 const AWS = require('aws-sdk');
 const documentClient = new AWS.DynamoDB.DocumentClient({
-  region: 'ap-northeast-2'
+  region: 'ap-northeast-2',
 });
 
 const DB_TABLE_NAME = 'produce-x-101';
@@ -20,7 +20,7 @@ const HOW_MANY_TRAINEE = 101;
 
     await store(profile);
 
-    await page.waitFor(1000);   // 매너(?) 크롤링!
+    await page.waitFor(1000); // 매너(?) 크롤링!
   }
 
   await browser.close();
@@ -40,8 +40,8 @@ const getProfile = async (page, id) => {
   return {
     id,
     name,
-    mainPictureUrl
-  }
+    mainPictureUrl,
+  };
 };
 
 const getName = () => {
@@ -51,7 +51,7 @@ const getName = () => {
     '.descRight',
     'dt:first-child',
     'p:nth-child(2)',
-    'span'
+    'span',
   ].join(' ');
 
   return document.querySelector(selector).textContent;
@@ -63,26 +63,26 @@ const getMainPictureUrl = () => {
     '.descBox',
     '.descLeft',
     '.portfolio',
-    'img'
+    'img',
   ].join(' ');
 
   return document.querySelector(selector).getAttribute('src');
 };
 
-const store = async (profile) => {
+const store = async profile => {
   const params = {
     TableName: DB_TABLE_NAME,
-    Item: profile
-  }
+    Item: profile,
+  };
 
-  console.info('Store ' + profile.name + '\'s profile...');
+  console.info('Store ' + profile.name + "'s profile...");
   console.info('- ID : ' + profile.id);
   console.info('- Picture URL : ' + profile.mainPictureUrl);
 
   download(encodeURI(profile.mainPictureUrl), {
     directory: './src/assets/images/',
-    filename: profile.id + '.jpg'
-  })
+    filename: profile.id + '.jpg',
+  });
 
   documentClient.put(params, (err, data) => {
     if (err) {

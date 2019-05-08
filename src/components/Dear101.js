@@ -9,7 +9,8 @@ import LoadingContent from './LoadingContent';
 import Trainee from './Trainee';
 import Dear101Data from './Dear101Data';
 
-const PATH_FETCH = 'https://7orvtlfpoh.execute-api.ap-northeast-2.amazonaws.com/default/scan-produce-x-101';
+const PATH_FETCH =
+  'https://7orvtlfpoh.execute-api.ap-northeast-2.amazonaws.com/default/scan-produce-x-101';
 
 const SORTS = {
   RATE: (list, selected) => {
@@ -23,11 +24,15 @@ const SORTS = {
       filtered = list;
     }
 
-    return chain(filtered).sortBy('lastRank')
-                          .sortBy('dearHugStepLastDate').reverse()
-                          .sortBy('dearHugRate').reverse().value()
-  }
-}
+    return chain(filtered)
+      .sortBy('lastRank')
+      .sortBy('dearHugStepLastDate')
+      .reverse()
+      .sortBy('dearHugRate')
+      .reverse()
+      .value();
+  },
+};
 
 class Dear101 extends Component {
   constructor(props) {
@@ -59,7 +64,7 @@ class Dear101 extends Component {
 
   fetchTraineeData() {
     this.setState({ isLoading: true });
-    
+
     axios(`${PATH_FETCH}`)
       .then(result => this.setTraineeData(result.data))
       .catch(error => this.setState({ error }));
@@ -67,7 +72,7 @@ class Dear101 extends Component {
 
   setTraineeData(data) {
     this.setPropertyForSelection(data);
-    
+
     this.setState({
       traineeData: data,
       isLoading: false,
@@ -95,13 +100,13 @@ class Dear101 extends Component {
 
       selection.push({
         value: item.id,
-        label: name
+        label: name,
       });
     });
 
     this.setState({
       traineeSelected: null,
-      traineeSelection: selection
+      traineeSelection: selection,
     });
   }
 
@@ -132,10 +137,7 @@ class Dear101 extends Component {
   handleContextRef = contextRef => this.setState({ contextRef });
 
   render() {
-    const {
-      i18n,
-      t
-    } = this.props;
+    const { i18n, t } = this.props;
 
     const {
       traineeData,
@@ -144,7 +146,7 @@ class Dear101 extends Component {
       selectedMenu,
       sortKey,
       isLoading,
-      contextRef
+      contextRef,
     } = this.state;
 
     return (
@@ -155,23 +157,24 @@ class Dear101 extends Component {
           header="Dear 101 후원 순위"
           content="매일 자정에 업데이트됩니다."
         />
-        { isLoading
-          ? <LoadingContent />
-          : <div>
-              <Select
-                style={{ zIndex: 900 }}
-                isMulti
-                placeholder="이름"
-                closeMenuOnSelect={false}
-                value={traineeSelected}
-                options={traineeSelection} 
-                onChange={this.onChangeSelection} 
-              />
-              <FlipMove>
+        {isLoading ? (
+          <LoadingContent />
+        ) : (
+          <div>
+            <Select
+              style={{ zIndex: 900 }}
+              isMulti
+              placeholder="이름"
+              closeMenuOnSelect={false}
+              value={traineeSelected}
+              options={traineeSelection}
+              onChange={this.onChangeSelection}
+            />
+            <FlipMove>
               {SORTS[sortKey](traineeData, traineeSelected).map(trainee => {
                 return (
                   <div key={trainee.id}>
-                    <Trainee 
+                    <Trainee
                       i18n={i18n}
                       t={t}
                       trainee={trainee}
@@ -196,13 +199,13 @@ class Dear101 extends Component {
                       />
                     </Trainee>
                   </div>
-                )})
-              }
-              </FlipMove>
-            </div>
-        }
+                );
+              })}
+            </FlipMove>
+          </div>
+        )}
       </div>
-    )
+    );
   }
 }
 

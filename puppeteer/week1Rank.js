@@ -3,7 +3,9 @@ const puppeteer = require('puppeteer');
 const _ = require('lodash');
 
 const AWS = require('aws-sdk');
-const documentClient = new AWS.DynamoDB.DocumentClient({region: 'ap-northeast-2'});
+const documentClient = new AWS.DynamoDB.DocumentClient({
+  region: 'ap-northeast-2',
+});
 
 const URL = 'http://produce-x-101.mnet.com/pc/rank/1';
 const DB_TABLE_NAME = 'produce-x-101';
@@ -26,14 +28,14 @@ const trainees = JSON.parse(fs.readFileSync(FILE_PATH, 'utf8'));
 
   const nameOf1to10 = await page.evaluate(getnameOf1to10);
   nameOf1to10.forEach(name => {
-    const id = _.find(trainees, { 'name': name }).id;
-    
+    const id = _.find(trainees, { name: name }).id;
+
     console.log(id, name, rank);
 
     store({
       id,
       name,
-      rank
+      rank,
     });
 
     rank++;
@@ -41,14 +43,14 @@ const trainees = JSON.parse(fs.readFileSync(FILE_PATH, 'utf8'));
 
   const nameOf11to30 = await page.evaluate(getnameOf11to30);
   nameOf11to30.forEach(name => {
-    const id = _.find(trainees, { 'name': name }).id;
-    
+    const id = _.find(trainees, { name: name }).id;
+
     console.log(id, name, rank);
 
     store({
       id,
       name,
-      rank
+      rank,
     });
 
     rank++;
@@ -56,14 +58,14 @@ const trainees = JSON.parse(fs.readFileSync(FILE_PATH, 'utf8'));
 
   const nameOf31to50 = await page.evaluate(getNameOf31to50);
   nameOf31to50.forEach(name => {
-    const id = _.find(trainees, { 'name': name }).id;
-    
+    const id = _.find(trainees, { name: name }).id;
+
     console.log(id, name, rank);
 
     store({
       id,
       name,
-      rank
+      rank,
     });
 
     rank++;
@@ -71,14 +73,14 @@ const trainees = JSON.parse(fs.readFileSync(FILE_PATH, 'utf8'));
 
   const nameOf51to70 = await page.evaluate(getNameOf51to70);
   nameOf51to70.forEach(name => {
-    const id = _.find(trainees, { 'name': name }).id;
-    
+    const id = _.find(trainees, { name: name }).id;
+
     console.log(id, name, rank);
 
     store({
       id,
       name,
-      rank
+      rank,
     });
 
     rank++;
@@ -86,14 +88,14 @@ const trainees = JSON.parse(fs.readFileSync(FILE_PATH, 'utf8'));
 
   const nameOf71to90 = await page.evaluate(getNameOf71to90);
   nameOf71to90.forEach(name => {
-    const id = _.find(trainees, { 'name': name }).id;
-    
+    const id = _.find(trainees, { name: name }).id;
+
     console.log(id, name, rank);
 
     store({
       id,
       name,
-      rank
+      rank,
     });
 
     rank++;
@@ -101,14 +103,14 @@ const trainees = JSON.parse(fs.readFileSync(FILE_PATH, 'utf8'));
 
   const nameOf91to101 = await page.evaluate(getNameOf91to101);
   nameOf91to101.forEach(name => {
-    const id = _.find(trainees, { 'name': name }).id;
-    
+    const id = _.find(trainees, { name: name }).id;
+
     console.log(id, name, rank);
 
     store({
       id,
       name,
-      rank
+      rank,
     });
 
     rank++;
@@ -183,16 +185,16 @@ function store(item) {
   const params = {
     TableName: DB_TABLE_NAME,
     Key: {
-      id: item.id
+      id: item.id,
     },
     UpdateExpression: 'set week1Rank = :r, lastRank = :lr',
     ExpressionAttributeValues: {
       ':r': item.rank,
-      ':lr': item.rank
-    }
+      ':lr': item.rank,
+    },
   };
 
-  console.info('Store ' + item.name + '\'s data...');
+  console.info('Store ' + item.name + "'s data...");
 
   documentClient.update(params, (err, data) => {
     if (err) {
@@ -201,4 +203,4 @@ function store(item) {
       process.exit();
     }
   });
-};
+}

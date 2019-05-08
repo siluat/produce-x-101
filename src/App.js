@@ -22,62 +22,47 @@ class App extends Component {
     }
   }
 
-  handleContextRef = contextRef => this.setState({ contextRef })
+  handleContextRef = contextRef => this.setState({ contextRef });
 
   render() {
-    const {
-      contextRef
-    } = this.state;
+    const { contextRef } = this.state;
 
     return (
       <Router>
         <div ref={this.handleContextRef}>
-          <Sticky context={contextRef} className='top-menu'>
-            <Menu
-              attached
-              inverted
-            >
-              <Dropdown
-                style={{ width: '100%' }}
-                item
-                text='메뉴'
-              >
-                <Dropdown.Menu >
-                  <Dropdown.Item href='/dear101'>
+          <Sticky context={contextRef} className="top-menu">
+            <Menu attached inverted>
+              <Dropdown style={{ width: '100%' }} item text="메뉴">
+                <Dropdown.Menu>
+                  <Dropdown.Item href="/dear101">
                     Dear 101 후원 순위
                   </Dropdown.Item>
-                  <Dropdown.Item href='/x1ma'>
+                  <Dropdown.Item href="/x1ma">
                     _지마 직캠 항목별 순위
                   </Dropdown.Item>
-                  <Dropdown.Item href='/changelog'>
-                    업데이트 기록
-                  </Dropdown.Item>
+                  <Dropdown.Item href="/changelog">업데이트 기록</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </Menu>
           </Sticky>
           <Switch>
-            <Route 
-              exact path="/"
-              render={(props) => <Dear101 {...props} />}
-            />
-            <Route 
-              exact path="/dear101"
-              render={(props) => <Dear101 {...props} />}
-            />
-            <Route 
-              exact path="/x1ma"
-              render={(props) => <X1MaDirectCamRank {...props} />}
+            <Route exact path="/" render={props => <Dear101 {...props} />} />
+            <Route
+              exact
+              path="/dear101"
+              render={props => <Dear101 {...props} />}
             />
             <Route
-              exaxt path="/changelog"
-              component={ChangeLog}
+              exact
+              path="/x1ma"
+              render={props => <X1MaDirectCamRank {...props} />}
             />
+            <Route exaxt path="/changelog" component={ChangeLog} />
           </Switch>
           <Footer />
         </div>
       </Router>
-    )
+    );
   }
 }
 

@@ -6,6 +6,6 @@ const ProgressOuterValue = styled.div`
   top: 44px;
   left: 90px;
   font-weight: 700;
-`
+`;
 
 export default ProgressOuterValue;

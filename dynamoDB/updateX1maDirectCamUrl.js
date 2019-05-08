@@ -1,7 +1,7 @@
 const fs = require('fs');
 const AWS = require('aws-sdk');
 const documentClient = new AWS.DynamoDB.DocumentClient({
-  region: 'ap-northeast-2'
+  region: 'ap-northeast-2',
 });
 
 const DB_TABLE_NAME = 'produce-x-101';
@@ -23,12 +23,12 @@ function store(item) {
   const params = {
     TableName: DB_TABLE_NAME,
     Key: {
-      id: item.id
+      id: item.id,
     },
     UpdateExpression: 'set x1maDirectCamUrl = :r',
     ExpressionAttributeValues: {
-      ':r': item.value
-    }
+      ':r': item.value,
+    },
   };
 
   documentClient.update(params, (err, data) => {
@@ -38,4 +38,4 @@ function store(item) {
       process.exit();
     }
   });
-};
+}
