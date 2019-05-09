@@ -5,6 +5,14 @@ import { withNamespaces } from 'react-i18next';
 const ChangeLog = ({ i18n, t }) => (
   <div>
     <Header as="h3" attached>
+      2019-05-10
+    </Header>
+    <Segment attached>
+      <List bulleted>
+        <List.Item>{t('changelog.20190510.1')}</List.Item>
+      </List>
+    </Segment>
+    <Header as="h3" attached>
       2019-05-07
     </Header>
     <Segment attached>

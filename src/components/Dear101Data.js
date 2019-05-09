@@ -73,8 +73,8 @@ const Dear101Data = ({
             case 'days':
               return (
                 <span>
-                  {moment(dearHugStep13Date).diff('2018-05-21', 'days')}
-                  {'일'}
+                  {moment(dearHugStep13Date).diff('2019-04-09', 'days')}
+                  {t('dear101.dayText')}
                 </span>
               );
             default:
@@ -103,7 +103,7 @@ const Dear101Data = ({
               return (
                 <span>
                   {moment(dearHugStep23Date).diff(dearHugStep13Date, 'days')}
-                  {'일'}
+                  {t('dear101.dayText')}
                 </span>
               );
             default:
@@ -135,7 +135,7 @@ const Dear101Data = ({
               return (
                 <span>
                   {moment(dearHugStep33Date).diff(dearHugStep23Date, 'days')}
-                  {'일'}
+                  {t('dear101.dayText')}
                 </span>
               );
             default:
@@ -167,7 +167,7 @@ const Dear101Data = ({
               return (
                 <span>
                   {moment(dearHugStep43Date).diff(dearHugStep33Date, 'days')}
-                  {'일'}
+                  {t('dear101.dayText')}
                 </span>
               );
             default:
@@ -199,7 +199,7 @@ const Dear101Data = ({
               return (
                 <span>
                   {moment(dearHugStep53Date).diff(dearHugStep43Date, 'days')}
-                  {'일'}
+                  {t('dear101.dayText')}
                 </span>
               );
             default:

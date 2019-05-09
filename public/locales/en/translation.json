@@ -12,7 +12,12 @@
   },
   "dear101": {
     "step": "{{value}}Step",
-    "upToday": "Rising today!"
+    "upToday": "Rising today!",
+    "stepView": "Step",
+    "videoView": "Video",
+    "timestampView": "Timestamp",
+    "daysView": "Period",
+    "dayText": "D"
   },
   "heart": "Heart",
   "playCount": "Views",
@@ -22,6 +27,9 @@
     "20190507": {
       "1": "Add Dear 101 Rank",
       "2": "Add X1_MA Focus Cam Rank"
+    },
+    "20190510": {
+      "1": "Add Dear 101 Timestamp and period by step"
     }
   }
 }

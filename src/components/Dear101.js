@@ -153,6 +153,16 @@ class Dear101 extends Component {
           header={t('menu.dear101')}
           content={t('update.everyMidnight')}
         />
+        <Sticky context={contextRef} offset={40}>
+          <MenuBar
+            t={t}
+            activeItem={selectedMenu}
+            onClickStep={this.onClickStep}
+            onClickVideo={this.onClickVideo}
+            onClickTimeStamp={this.onClickTimeStamp}
+            onClickDays={this.onClickDays}
+          />
+        </Sticky>
         {isLoading ? (
           <LoadingContent />
         ) : (
@@ -201,5 +211,53 @@ class Dear101 extends Component {
     );
   }
 }
+
+const MenuBar = ({
+  t,
+  activeItem,
+  onClickStep,
+  onClickVideo,
+  onClickTimeStamp,
+  onClickDays,
+}) => (
+  <Menu icon="labeled" attached widths={3}>
+    <Menu.Item
+      name="step"
+      active={activeItem === 'step'}
+      onClick={onClickStep}
+      color="blue"
+    >
+      <Icon name="chart line" />
+      {t('dear101.stepView')}
+    </Menu.Item>
+    {/* <Menu.Item
+      name="video"
+      active={activeItem === 'video'}
+      onClick={onClickVideo}
+      color="blue"
+    >
+      <Icon name="play circle outline" />
+      {t('dear101.videoView')}
+    </Menu.Item> */}
+    <Menu.Item
+      name="timestamp"
+      active={activeItem === 'timestamp'}
+      onClick={onClickTimeStamp}
+      color="blue"
+    >
+      <Icon name="calendar check" />
+      {t('dear101.timestampView')}
+    </Menu.Item>
+    <Menu.Item
+      name="days"
+      active={activeItem === 'days'}
+      onClick={onClickDays}
+      color="blue"
+    >
+      <Icon name="hourglass end" />
+      {t('dear101.daysView')}
+    </Menu.Item>
+  </Menu>
+);
 
 export default withNamespaces('translation')(Dear101);
