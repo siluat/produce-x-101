@@ -78,7 +78,11 @@ class App extends Component {
             </Menu>
           </Sticky>
           <Switch>
-            <Route exact path="/" render={props => <Dear101 {...props} />} />
+            <Route
+              exact
+              path="/"
+              render={props => <X1MaDirectCamRank {...props} />}
+            />
             <Route
               exact
               path="/dear101"
