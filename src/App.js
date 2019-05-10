@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import ReactGA from 'react-ga';
-import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import {
+  Switch,
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import { Menu, Sticky, Dropdown } from 'semantic-ui-react';
 import i18n from './components/i18n';
 import { withNamespaces } from 'react-i18next';
@@ -81,7 +86,9 @@ class App extends Component {
             <Route
               exact
               path="/"
-              render={props => <X1MaDirectCamRank {...props} />}
+              render={props => (
+                <Redirect to={{ pathname: '/x1ma' }} {...props} />
+              )}
             />
             <Route
               exact
