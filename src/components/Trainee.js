@@ -62,6 +62,26 @@ const RankChartContainer = styled.div`
   margin-top: 10px;
 `;
 
+const RankUp = styled.span`
+  color: #f03e3e;
+  font-size: 13px;
+  i {
+    font-size: 11px;
+    margin-left: 2px;
+    margin-right: 0;
+  }
+`;
+
+const RankDown = styled.span`
+  color: #1864ab;
+  font-size: 13px;
+  i {
+    font-size: 11px;
+    margin-left: 2px;
+    margin-right: 0;
+  }
+`;
+
 class Trainee extends Component {
   constructor(props) {
     super(props);
@@ -94,6 +114,7 @@ class Trainee extends Component {
           nameInJapanese={trainee.nameInJapanese}
           nameInEnglish={trainee.nameInEnglish}
           lastRank={trainee.lastRank || 0}
+          week1Rank={trainee.week1Rank}
           videoLink={videoLink}
           videoTwitterLink={videoTwitterLink}
           videoInstaLink={videoInstaLink}
@@ -137,6 +158,7 @@ const TraineeDescription = ({
   nameInJapanese,
   nameInEnglish,
   lastRank,
+  week1Rank,
   videoLink,
   videoTwitterLink,
   videoInstaLink,
@@ -155,6 +177,7 @@ const TraineeDescription = ({
       nameInJapanese={nameInJapanese}
       nameInEnglish={nameInEnglish}
       lastRank={lastRank}
+      week1Rank={week1Rank}
       videoLink={videoLink}
       videoTwitterLink={videoTwitterLink}
       videoInstaLink={videoInstaLink}
@@ -175,6 +198,7 @@ const TraineeLabel = ({
   nameInJapanese,
   nameInEnglish,
   lastRank,
+  week1Rank,
   videoLink,
   videoTwitterLink,
   videoInstaLink,
@@ -185,6 +209,19 @@ const TraineeLabel = ({
 }) => (
   <TraineeLabelContainer>
     <TraineeRank>{lastRank}</TraineeRank>
+    {lastRank === week1Rank && <span> - </span>}
+    {lastRank > week1Rank && (
+      <RankDown>
+        <Icon name="arrow down" />
+        {lastRank - week1Rank}
+      </RankDown>
+    )}
+    {lastRank < week1Rank && (
+      <RankUp>
+        <Icon name="arrow up" />
+        {week1Rank - lastRank}
+      </RankUp>
+    )}
     {i18n.language !== 'en' && <TraineeName>{name}</TraineeName>}
     {i18n.language === 'en' && <TraineeName>{nameInEnglish}</TraineeName>}
     {videoLink ? (
