@@ -31,5 +31,9 @@
     "20190510": {
       "1": "Add Dear 101 Timestamp and period by step"
     }
+  },
+  "system": {
+    "invalid-url": "Found not page",
+    "use-menu-on-top": "Use the menu on the top"
   }
 }
