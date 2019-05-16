@@ -44,11 +44,11 @@ const Dear101Data = ({
   selectedMenu,
   retired,
   dearHugRate,
-  dearHugFirstVideo,
-  dearHugSecondVideo,
-  dearHugThirdVideo,
-  dearHugFourthVideo,
-  dearHugFifthVideo,
+  dear101FirstVideo,
+  dear101SecondVideo,
+  dear101ThirdVideo,
+  dear101FourthVideo,
+  dear101FifthVideo,
   dearHugStep13Date,
   dearHugStep23Date,
   dearHugStep33Date,
@@ -61,9 +61,9 @@ const Dear101Data = ({
         {(() => {
           switch (selectedMenu) {
             case 'video':
-              return dearHugFirstVideo ? (
-                <VideoLink href={dearHugFirstVideo} target="_blank">
-                  <Icon name="play circle" />
+              return dear101FirstVideo ? (
+                <VideoLink href={dear101FirstVideo} target="_blank">
+                  <Icon name="video" />
                 </VideoLink>
               ) : (
                 <span>-</span>
@@ -90,8 +90,8 @@ const Dear101Data = ({
         {(() => {
           switch (selectedMenu) {
             case 'video':
-              return dearHugSecondVideo ? (
-                <VideoLink href={dearHugSecondVideo} target="_blank">
+              return dear101SecondVideo ? (
+                <VideoLink href={dear101SecondVideo} target="_blank">
                   <Icon name="play circle" />
                 </VideoLink>
               ) : (
@@ -122,8 +122,8 @@ const Dear101Data = ({
         {(() => {
           switch (selectedMenu) {
             case 'video':
-              return dearHugThirdVideo ? (
-                <VideoLink href={dearHugThirdVideo} target="_blank">
+              return dear101ThirdVideo ? (
+                <VideoLink href={dear101ThirdVideo} target="_blank">
                   <Icon name="play circle" />
                 </VideoLink>
               ) : (
@@ -154,8 +154,8 @@ const Dear101Data = ({
         {(() => {
           switch (selectedMenu) {
             case 'video':
-              return dearHugFourthVideo ? (
-                <VideoLink href={dearHugFourthVideo} target="_blank">
+              return dear101FourthVideo ? (
+                <VideoLink href={dear101FourthVideo} target="_blank">
                   <Icon name="play circle" />
                 </VideoLink>
               ) : (
@@ -186,8 +186,8 @@ const Dear101Data = ({
         {(() => {
           switch (selectedMenu) {
             case 'video':
-              return dearHugFifthVideo ? (
-                <VideoLink href={dearHugFifthVideo} target="_blank">
+              return dear101FifthVideo ? (
+                <VideoLink href={dear101FifthVideo} target="_blank">
                   <Icon name="play circle" />
                 </VideoLink>
               ) : (

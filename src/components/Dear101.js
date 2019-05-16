@@ -189,11 +189,11 @@ class Dear101 extends Component {
                         selectedMenu={selectedMenu}
                         retired={trainee.retired}
                         dearHugRate={trainee.dearHugRate}
-                        dearHugFirstVideo={trainee.dearHugFirstVideo}
-                        dearHugSecondVideo={trainee.dearHugSecondVideo}
-                        dearHugThirdVideo={trainee.dearHugThirdVideo}
-                        dearHugFourthVideo={trainee.dearHugFourthVideo}
-                        dearHugFifthVideo={trainee.dearHugFifthVideo}
+                        dear101FirstVideo={trainee.dear101FirstVideo}
+                        dear101SecondVideo={trainee.dear101SecondVideo}
+                        dear101ThirdVideo={trainee.dear101ThirdVideo}
+                        dear101FourthVideo={trainee.dear101FourthVideo}
+                        dear101FifthVideo={trainee.dear101FifthVideo}
                         dearHugStep13Date={trainee.dearHugStep13Date}
                         dearHugStep23Date={trainee.dearHugStep23Date}
                         dearHugStep33Date={trainee.dearHugStep33Date}
@@ -220,7 +220,7 @@ const MenuBar = ({
   onClickTimeStamp,
   onClickDays,
 }) => (
-  <Menu icon="labeled" attached widths={3}>
+  <Menu icon="labeled" attached widths={4}>
     <Menu.Item
       name="step"
       active={activeItem === 'step'}
@@ -230,15 +230,6 @@ const MenuBar = ({
       <Icon name="chart line" />
       {t('dear101.stepView')}
     </Menu.Item>
-    {/* <Menu.Item
-      name="video"
-      active={activeItem === 'video'}
-      onClick={onClickVideo}
-      color="blue"
-    >
-      <Icon name="play circle outline" />
-      {t('dear101.videoView')}
-    </Menu.Item> */}
     <Menu.Item
       name="timestamp"
       active={activeItem === 'timestamp'}
@@ -256,6 +247,15 @@ const MenuBar = ({
     >
       <Icon name="hourglass end" />
       {t('dear101.daysView')}
+    </Menu.Item>
+    <Menu.Item
+      name="video"
+      active={activeItem === 'video'}
+      onClick={onClickVideo}
+      color="blue"
+    >
+      <Icon name="video" />
+      {t('dear101.videoView')}
     </Menu.Item>
   </Menu>
 );
