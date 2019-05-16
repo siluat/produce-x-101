@@ -29,7 +29,7 @@ const DearStepBar = styled.div`
   text-align: center;
   white-space: nowrap;
   height: 30px;
-  background-color: ${props => (props.retired ? '#ff50a0' : '#013DFD')};
+  background-color: ${props => (props.retired ? '#868e96' : '#013dfd')};
   transition: width 0.6s ease;
   box-sizing: border-box;
   font-size: 0.86rem;
