@@ -15,6 +15,7 @@ import Dear101 from './components/Dear101';
 import X1MaDirectCamRank from './components/X1MaDirectCamRank';
 import ChangeLog from './components/ChangeLog';
 import NoMatch from './components/NoMatch';
+import CrawlerStatus from './components/CrawlerStatus';
 
 import './styles/important.css';
 
@@ -102,6 +103,7 @@ class App extends Component {
               render={props => <X1MaDirectCamRank {...props} />}
             />
             <Route exaxt path="/changelog" component={ChangeLog} />
+            <Route exaxt path="/status" component={CrawlerStatus} />
             <Route render={props => <NoMatch {...props} />} />
           </Switch>
           <Footer />

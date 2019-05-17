@@ -229,6 +229,7 @@ const TraineeLabel = ({
         onClick={preventEventPropagation}
         href={videoInstaLink}
         target="_blank"
+        rel="noopener noreferrer"
       >
         <Icon name="instagram" />
       </a>
