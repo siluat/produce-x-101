@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
-import { Icon, Label, Segment } from 'semantic-ui-react';
-import { ResponsiveContainer, LineChart, Line, XAxis, YAxis } from 'recharts';
+import { Icon, Label } from 'semantic-ui-react';
 import { withNamespaces } from 'react-i18next';
 
 const MAIN_PICTURE_PATH = '/images/mainPictures/144px/';
@@ -58,10 +57,6 @@ const TraineeName = styled.span`
   padding: 0 5px;
 `;
 
-const RankChartContainer = styled.div`
-  margin-top: 10px;
-`;
-
 const RankUp = styled.span`
   color: #f03e3e;
   font-size: 13px;
@@ -83,10 +78,6 @@ const RankDown = styled.span`
 `;
 
 class Trainee extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {
       i18n,
@@ -98,8 +89,6 @@ class Trainee extends Component {
       videoTwitterLink,
       videoInstaLink,
       videoFacebookLink,
-      usePunchName,
-      disableRankChart,
       children,
     } = this.props;
 
@@ -135,13 +124,6 @@ class Trainee extends Component {
     );
   }
 }
-
-const CustomizedRankLabel = ({ x, y, stroke, value, t }) => (
-  <text x={x} y={y} dy={-10} fill={stroke} fontSize={12} textAnchor="middle">
-    {value}
-    {t('rank')}
-  </text>
-);
 
 const TraineePicture = ({ id, name }) => (
   <TraineePictureContainer>
@@ -193,9 +175,7 @@ const TraineeDescription = ({
 const TraineeLabel = ({
   i18n,
   t,
-  traineeId,
   name,
-  nameInJapanese,
   nameInEnglish,
   lastRank,
   week1Rank,

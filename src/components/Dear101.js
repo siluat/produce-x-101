@@ -133,7 +133,7 @@ class Dear101 extends Component {
   handleContextRef = contextRef => this.setState({ contextRef });
 
   render() {
-    const { i18n, t } = this.props;
+    const { t } = this.props;
 
     const {
       traineeData,
