@@ -205,7 +205,12 @@ const TraineeLabel = ({
     {i18n.language !== 'en' && <TraineeName>{name}</TraineeName>}
     {i18n.language === 'en' && <TraineeName>{nameInEnglish}</TraineeName>}
     {videoLink ? (
-      <a onClick={preventEventPropagation} href={videoLink} target="_blank">
+      <a
+        onClick={preventEventPropagation}
+        href={videoLink}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <Icon name="video play" />
       </a>
     ) : null}
@@ -214,6 +219,7 @@ const TraineeLabel = ({
         onClick={preventEventPropagation}
         href={videoTwitterLink}
         target="_blank"
+        rel="noopener noreferrer"
       >
         <Icon name="twitter" />
       </a>
@@ -232,6 +238,7 @@ const TraineeLabel = ({
         onClick={preventEventPropagation}
         href={videoFacebookLink}
         target="_blank"
+        rel="noopener noreferrer"
       >
         <Icon name="facebook" />
       </a>
@@ -245,6 +252,7 @@ const TraineeLabel = ({
           '&cate=hug'
         }
         target="_blank"
+        rel="noopener noreferrer"
       >
         <Icon name="external" />
       </a>
