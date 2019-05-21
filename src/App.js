@@ -54,6 +54,10 @@ class App extends Component {
                   <Dropdown.Item href="/changelog">
                     {t('menu.changelog')}
                   </Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item href="https://produce48.surge.sh" target="_blank">
+                    IZ*ONE Forever
+                  </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
               <Menu.Item
