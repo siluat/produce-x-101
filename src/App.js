@@ -48,7 +48,7 @@ class App extends Component {
                   <Dropdown.Item href="/dear101">
                     {t('menu.dear101')}
                   </Dropdown.Item>
-                  <Dropdown.Item href="/group">{t('menu.group')}</Dropdown.Item>
+                  <Dropdown.Item href="/groupx">{t('menu.group')}</Dropdown.Item>
                   <Dropdown.Item href="/x1ma">{t('menu.x1ma')}</Dropdown.Item>
                   <Dropdown.Divider />
                   <Dropdown.Item href="/changelog">
