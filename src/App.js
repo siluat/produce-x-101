@@ -91,7 +91,7 @@ class App extends Component {
               exact
               path="/"
               render={props => (
-                <Redirect to={{ pathname: '/group' }} {...props} />
+                <Redirect to={{ pathname: '/groupx' }} {...props} />
               )}
             />
             <Route
@@ -106,7 +106,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/group"
+              path="/groupx"
               render={props => <GroupDirectCamRank {...props} />}
             />
             <Route exaxt path="/changelog" component={ChangeLog} />
