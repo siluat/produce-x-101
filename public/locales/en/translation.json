@@ -2,7 +2,8 @@
   "menuLabel": "Menu",
   "menu": {
     "dear101": "Dear 101 Rank",
-    "x1ma": "X1-MA Focus Cam Rank",
+    "x1ma": "X1-MA Naver TV Rank",
+    "group": "Group X Battle Naver TV Rank",
     "changelog": "Changelog"
   },
   "update": {
@@ -26,10 +27,13 @@
   "changelog": {
     "20190507": {
       "1": "Add Dear 101 Rank",
-      "2": "Add X1-MA Focus Cam Rank"
+      "2": "Add X1-MA Naver TV Rank"
     },
     "20190510": {
       "1": "Add Dear 101 Timestamp and period by step"
+    },
+    "20190521": {
+      "1": "Add Group X Battle Naver TV Rank"
     }
   },
   "system": {

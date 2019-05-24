@@ -13,6 +13,7 @@ import { withNamespaces } from 'react-i18next';
 import Footer from './components/Footer';
 import Dear101 from './components/Dear101';
 import X1MaDirectCamRank from './components/X1MaDirectCamRank';
+import GroupDirectCamRank from './components/GroupDirectCamRank';
 import ChangeLog from './components/ChangeLog';
 import NoMatch from './components/NoMatch';
 import CrawlerStatus from './components/CrawlerStatus';
@@ -47,10 +48,15 @@ class App extends Component {
                   <Dropdown.Item href="/dear101">
                     {t('menu.dear101')}
                   </Dropdown.Item>
+                  <Dropdown.Item href="/groupx">{t('menu.group')}</Dropdown.Item>
                   <Dropdown.Item href="/x1ma">{t('menu.x1ma')}</Dropdown.Item>
                   <Dropdown.Divider />
                   <Dropdown.Item href="/changelog">
                     {t('menu.changelog')}
+                  </Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item href="https://produce48.surge.sh" target="_blank">
+                    IZ*ONE Forever
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
@@ -89,7 +95,7 @@ class App extends Component {
               exact
               path="/"
               render={props => (
-                <Redirect to={{ pathname: '/x1ma' }} {...props} />
+                <Redirect to={{ pathname: '/groupx' }} {...props} />
               )}
             />
             <Route
@@ -101,6 +107,11 @@ class App extends Component {
               exact
               path="/x1ma"
               render={props => <X1MaDirectCamRank {...props} />}
+            />
+            <Route
+              exact
+              path="/groupx"
+              render={props => <GroupDirectCamRank {...props} />}
             />
             <Route exaxt path="/changelog" component={ChangeLog} />
             <Route exaxt path="/status" component={CrawlerStatus} />
