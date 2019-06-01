@@ -103,7 +103,7 @@ class Trainee extends Component {
           nameInJapanese={trainee.nameInJapanese}
           nameInEnglish={trainee.nameInEnglish}
           lastRank={trainee.lastRank || 0}
-          week2Rank={trainee.week2Rank}
+          week3Rank={trainee.week3Rank}
           videoLink={videoLink}
           videoTwitterLink={videoTwitterLink}
           videoInstaLink={videoInstaLink}
@@ -140,7 +140,7 @@ const TraineeDescription = ({
   nameInJapanese,
   nameInEnglish,
   lastRank,
-  week2Rank,
+  week3Rank,
   videoLink,
   videoTwitterLink,
   videoInstaLink,
@@ -159,7 +159,7 @@ const TraineeDescription = ({
       nameInJapanese={nameInJapanese}
       nameInEnglish={nameInEnglish}
       lastRank={lastRank}
-      week2Rank={week2Rank}
+      week3Rank={week3Rank}
       videoLink={videoLink}
       videoTwitterLink={videoTwitterLink}
       videoInstaLink={videoInstaLink}
@@ -178,7 +178,7 @@ const TraineeLabel = ({
   name,
   nameInEnglish,
   lastRank,
-  week2Rank,
+  week3Rank,
   videoLink,
   videoTwitterLink,
   videoInstaLink,
@@ -189,17 +189,17 @@ const TraineeLabel = ({
 }) => (
   <TraineeLabelContainer>
     <TraineeRank>{lastRank}</TraineeRank>
-    {lastRank === week2Rank && <span> - </span>}
-    {lastRank > week2Rank && (
+    {lastRank === week3Rank && <span> - </span>}
+    {lastRank > week3Rank && (
       <RankDown>
         <Icon name="arrow down" />
-        {lastRank - week2Rank}
+        {lastRank - week3Rank}
       </RankDown>
     )}
-    {lastRank < week2Rank && (
+    {lastRank < week3Rank && (
       <RankUp>
         <Icon name="arrow up" />
-        {week2Rank - lastRank}
+        {week3Rank - lastRank}
       </RankUp>
     )}
     {i18n.language !== 'en' && <TraineeName>{name}</TraineeName>}
