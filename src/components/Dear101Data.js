@@ -92,7 +92,7 @@ const Dear101Data = ({
             case 'video':
               return dear101SecondVideo ? (
                 <VideoLink href={dear101SecondVideo} target="_blank">
-                  <Icon name="play circle" />
+                  <Icon name="video" />
                 </VideoLink>
               ) : (
                 <span>-</span>
@@ -124,7 +124,7 @@ const Dear101Data = ({
             case 'video':
               return dear101ThirdVideo ? (
                 <VideoLink href={dear101ThirdVideo} target="_blank">
-                  <Icon name="play circle" />
+                  <Icon name="video" />
                 </VideoLink>
               ) : (
                 <span>-</span>
@@ -156,7 +156,7 @@ const Dear101Data = ({
             case 'video':
               return dear101FourthVideo ? (
                 <VideoLink href={dear101FourthVideo} target="_blank">
-                  <Icon name="play circle" />
+                  <Icon name="video" />
                 </VideoLink>
               ) : (
                 <span>-</span>
@@ -188,7 +188,7 @@ const Dear101Data = ({
             case 'video':
               return dear101FifthVideo ? (
                 <VideoLink href={dear101FifthVideo} target="_blank">
-                  <Icon name="play circle" />
+                  <Icon name="video" />
                 </VideoLink>
               ) : (
                 <span>-</span>
