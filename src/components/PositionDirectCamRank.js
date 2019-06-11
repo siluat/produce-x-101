@@ -13,16 +13,16 @@ const PATH_FETCH =
   'https://7orvtlfpoh.execute-api.ap-northeast-2.amazonaws.com/default/scan-produce-x-101';
 
 const SORTS = {
-  LIKE: list => sortBy(list, 'x1maLike').reverse(),
-  VIEW: list => sortBy(list, 'x1maView').reverse(),
-  COMMENT: list => sortBy(list, 'x1maComment').reverse(),
+  LIKE: list => sortBy(list, 'positionLike').reverse(),
+  VIEW: list => sortBy(list, 'positionView').reverse(),
+  COMMENT: list => sortBy(list, 'positionComment').reverse(),
 };
 
 const positionFilter = item => {
-  return item.x1maDirectCamUrl;
+  return item.positionDirectCamUrl;
 };
 
-class X1maDirectCamRanking extends Component {
+class PositionDirectCamRanking extends Component {
   constructor(props) {
     super(props);
 
@@ -74,9 +74,9 @@ class X1maDirectCamRanking extends Component {
     this.setState({
       traineeData: data,
       isLoading: false,
-      maxLike: maxBy(data, 'x1maLike').x1maLike,
-      maxView: maxBy(data, 'x1maView').x1maView,
-      maxComment: maxBy(data, 'x1maComment').x1maComment,
+      maxLike: maxBy(data, 'positionLike').positionLike,
+      maxView: maxBy(data, 'positionView').positionView,
+      maxComment: maxBy(data, 'positionComment').positionComment,
     });
   }
 
@@ -120,8 +120,8 @@ class X1maDirectCamRanking extends Component {
         <Message
           style={{ textAlign: 'center' }}
           attached
-          header={t('menu.x1ma')}
-          content={t('update.every20Minutes')}
+          header={t('menu.position')}
+          content={t('update.every10Minutes')}
         />
         <Sticky context={contextRef} offset={40}>
           <MenuBar
@@ -140,22 +140,22 @@ class X1maDirectCamRanking extends Component {
               let value, max;
               switch (sortKey) {
                 case 'VIEW':
-                  value = trainee.x1maView;
+                  value = trainee.positionView;
                   max = maxView;
                   break;
                 case 'COMMENT':
-                  value = trainee.x1maComment;
+                  value = trainee.positionComment;
                   max = maxComment;
                   break;
                 default:
-                  value = trainee.x1maLike;
+                  value = trainee.positionLike;
                   max = maxLike;
               }
               return (
                 <div key={trainee.id}>
                   <Trainee
                     trainee={trainee}
-                    videoLink={trainee.x1maDirectCamUrl}
+                    videoLink={trainee.positionDirectCamUrl}
                   >
                     <ProgressBar
                       value={value}
@@ -211,4 +211,4 @@ const MenuBar = ({
   </Menu>
 );
 
-export default withNamespaces('translation')(X1maDirectCamRanking);
+export default withNamespaces('translation')(PositionDirectCamRanking);

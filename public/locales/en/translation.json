@@ -4,12 +4,14 @@
     "dear101": "Dear 101 Rank",
     "x1ma": "X1-MA Naver TV Rank",
     "group": "Group X Battle Naver TV Rank",
+    "position": "Position Evaluation Naver TV Rank",
     "changelog": "Changelog"
   },
   "update": {
     "everyMidnight": "Updated every day at 00:00 KST",
     "every5Minutes": "Updated every 5 minutes.",
-    "every10Minutes": "Updated every 10 minutes."
+    "every10Minutes": "Updated every 10 minutes.",
+    "every20Minutes": "Updated every 20 minutes."
   },
   "dear101": {
     "step": "{{value}}Step",
@@ -34,6 +36,9 @@
     },
     "20190521": {
       "1": "Add Group X Battle Naver TV Rank"
+    },
+    "20190611": {
+      "1": "Add Position Evaluation Naver TV Rank"
     }
   },
   "system": {

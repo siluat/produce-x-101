@@ -121,7 +121,7 @@ class GroupDirectCamRanking extends Component {
           style={{ textAlign: 'center' }}
           attached
           header={t('menu.group')}
-          content={t('update.every10Minutes')}
+          content={t('update.every20Minutes')}
         />
         <Sticky context={contextRef} offset={40}>
           <MenuBar
