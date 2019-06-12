@@ -102,6 +102,7 @@ class GroupDirectCamRanking extends Component {
 
   render() {
     const { t } = this.props;
+    let partialRank = 1;
 
     const {
       traineeData,
@@ -156,6 +157,7 @@ class GroupDirectCamRanking extends Component {
                   <Trainee
                     trainee={trainee}
                     videoLink={trainee.groupDirectCamUrl}
+                    partialRank={partialRank++}
                   >
                     <ProgressBar
                       value={value}

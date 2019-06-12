@@ -102,6 +102,7 @@ class X1maDirectCamRanking extends Component {
 
   render() {
     const { t } = this.props;
+    let partialRank = 1;
 
     const {
       traineeData,
@@ -156,6 +157,7 @@ class X1maDirectCamRanking extends Component {
                   <Trainee
                     trainee={trainee}
                     videoLink={trainee.x1maDirectCamUrl}
+                    partialRank={partialRank++}
                   >
                     <ProgressBar
                       value={value}

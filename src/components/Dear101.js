@@ -134,6 +134,7 @@ class Dear101 extends Component {
 
   render() {
     const { t } = this.props;
+    let partialRank = 1;
 
     const {
       traineeData,
@@ -184,6 +185,7 @@ class Dear101 extends Component {
                       trainee={trainee}
                       dear101idx={trainee.dear101idx}
                       dearHugStepLastDate={trainee.dearHugStepLastDate}
+                      partialRank={partialRank++}
                     >
                       <Dear101Data
                         selectedMenu={selectedMenu}

@@ -77,6 +77,20 @@ const RankDown = styled.span`
   }
 `;
 
+const PartialRank = styled.span`
+  position: absolute;
+  z-index: 10;
+  top: 58px;
+  .ui.label {
+    background-color: rgba(1, 61, 253, 0.63);
+    color: #ffffff;
+  }
+  .ui.ribbon.label {
+    padding-left: calc(1rem + 0.9em);
+    padding-right: 0.8em;
+  }
+`;
+
 class Trainee extends Component {
   render() {
     const {
@@ -90,10 +104,12 @@ class Trainee extends Component {
       videoInstaLink,
       videoFacebookLink,
       children,
+      partialRank,
     } = this.props;
 
     return (
       <TraineeContainer>
+        {partialRank && <PartialRankContainer rank={partialRank} />}
         <TraineePicture id={trainee.id} name={trainee.name} />
         <TraineeDescription
           i18n={i18n}
@@ -124,6 +140,14 @@ class Trainee extends Component {
     );
   }
 }
+
+const PartialRankContainer = ({ rank }) => (
+  <PartialRank>
+    <Label size="small" ribbon>
+      {rank}
+    </Label>
+  </PartialRank>
+);
 
 const TraineePicture = ({ id, name }) => (
   <TraineePictureContainer>
@@ -189,7 +213,7 @@ const TraineeLabel = ({
 }) => (
   <TraineeLabelContainer>
     <TraineeRank>{lastRank}</TraineeRank>
-    {lastRank === week4Rank && <span> - </span>}
+    {/* {lastRank === week4Rank && <span> - </span>}
     {lastRank > week4Rank && (
       <RankDown>
         <Icon name="arrow down" />
@@ -201,7 +225,7 @@ const TraineeLabel = ({
         <Icon name="arrow up" />
         {week4Rank - lastRank}
       </RankUp>
-    )}
+    )} */}
     {i18n.language !== 'en' && <TraineeName>{name}</TraineeName>}
     {i18n.language === 'en' && <TraineeName>{nameInEnglish}</TraineeName>}
     {videoLink ? (

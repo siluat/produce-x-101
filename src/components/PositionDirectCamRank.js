@@ -28,6 +28,7 @@ class PositionDirectCamRanking extends Component {
 
     this.state = {
       traineeData: [],
+      rank: 1,
       maxLike: 0,
       maxView: 0,
       maxComment: 0,
@@ -102,6 +103,7 @@ class PositionDirectCamRanking extends Component {
 
   render() {
     const { t } = this.props;
+    let partialRank = 1;
 
     const {
       traineeData,
@@ -156,6 +158,7 @@ class PositionDirectCamRanking extends Component {
                   <Trainee
                     trainee={trainee}
                     videoLink={trainee.positionDirectCamUrl}
+                    partialRank={partialRank++}
                   >
                     <ProgressBar
                       value={value}
