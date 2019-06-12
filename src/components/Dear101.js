@@ -168,7 +168,7 @@ class Dear101 extends Component {
           <LoadingContent />
         ) : (
           <div>
-            <Select
+            {/* <Select
               style={{ zIndex: 900 }}
               isMulti
               placeholder={t('namePlaceHolder')}
@@ -176,7 +176,7 @@ class Dear101 extends Component {
               value={traineeSelected}
               options={traineeSelection}
               onChange={this.onChangeSelection}
-            />
+            /> */}
             <FlipMove>
               {SORTS[sortKey](traineeData, traineeSelected).map(trainee => {
                 return (

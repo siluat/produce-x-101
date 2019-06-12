@@ -81,12 +81,13 @@ const PartialRank = styled.span`
   position: absolute;
   z-index: 10;
   top: 58px;
+  left: -1px;
   .ui.label {
     background-color: rgba(1, 61, 253, 0.63);
     color: #ffffff;
-  }
-  .ui.ribbon.label {
-    padding-left: calc(1rem + 0.9em);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-left: 0.8em;
     padding-right: 0.8em;
   }
 `;
@@ -143,9 +144,7 @@ class Trainee extends Component {
 
 const PartialRankContainer = ({ rank }) => (
   <PartialRank>
-    <Label size="small" ribbon>
-      {rank}
-    </Label>
+    <Label size="small">{rank}</Label>
   </PartialRank>
 );
 
