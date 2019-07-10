@@ -27,6 +27,9 @@
   "playCount": "조회수",
   "comments": "댓글",
   "namePlaceHolder": "이름",
+  "rank": "위",
+  "week": "주차",
+  "weekly-rank-chart": "주차별 공식 투표 순위",
   "changelog": {
     "20190507": {
       "1": "Dear 101 후원 순위 추가",

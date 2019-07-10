@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
-import { Icon, Label } from 'semantic-ui-react';
+import { Icon, Label, Segment } from 'semantic-ui-react';
+import { ResponsiveContainer, LineChart, Line, XAxis, YAxis } from 'recharts';
 import { withNamespaces } from 'react-i18next';
 
 const MAIN_PICTURE_PATH = '/images/mainPictures/144px/';
@@ -92,7 +93,32 @@ const PartialRank = styled.span`
   }
 `;
 
+const RankChartContainer = styled.div`
+  margin-top: 10px;
+`;
+
 class Trainee extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showRankChart: false,
+    };
+
+    this.onClick = this.onClick.bind(this);
+    this.preventEventPropagation = this.preventEventPropagation.bind(this);
+  }
+
+  onClick() {
+    this.setState({
+      showRankChart: !this.state.showRankChart,
+    });
+  }
+
+  preventEventPropagation(event) {
+    event.stopPropagation();
+  }
+
   render() {
     const {
       i18n,
@@ -104,12 +130,27 @@ class Trainee extends Component {
       videoTwitterLink,
       videoInstaLink,
       videoFacebookLink,
+      disableRankChart,
       children,
       partialRank,
     } = this.props;
 
+    const { showRankChart } = this.state;
+
+    const rankData = [
+      { name: '1' + t('week'), rank: trainee.week1Rank },
+      { name: '2' + t('week'), rank: trainee.week2Rank },
+      { name: '3' + t('week'), rank: trainee.week3Rank },
+      { name: '5' + t('week'), rank: trainee.week4Rank },
+      { name: '6' + t('week'), rank: trainee.week6Rank },
+      { name: '8' + t('week'), rank: trainee.week8Rank },
+    ];
+
     return (
-      <TraineeContainer>
+      <TraineeContainer
+        onClick={!disableRankChart ? this.onClick : null}
+        showRankChart={showRankChart}
+      >
         {partialRank && <PartialRankContainer rank={partialRank} />}
         <TraineePicture id={trainee.id} name={trainee.name} />
         <TraineeDescription
@@ -137,6 +178,39 @@ class Trainee extends Component {
           preventEventPropagation={this.preventEventPropagation}
           children={children}
         />
+        {showRankChart ? (
+          <RankChartContainer>
+            <Segment padded style={{ padding: '20px 5px 5px 10px' }}>
+              <Label attached="top left">
+                {trainee.name}&nbsp;
+                {t('weekly-rank-chart')}
+              </Label>
+              <ResponsiveContainer height={100}>
+                <LineChart
+                  data={rankData}
+                  margin={{ top: 20, right: 5, left: 5, bottom: 5 }}
+                  padding={{ left: 0, right: 0 }}
+                >
+                  <Line
+                    type="linear"
+                    dataKey="rank"
+                    stroke="#013dfd"
+                    animationDuration={500}
+                    fill="#013dfd"
+                    label={<CustomizedRankLabel t={t} />}
+                  />
+                  <XAxis
+                    dataKey="name"
+                    padding={{ left: 10, right: 10 }}
+                    fontSize="12px"
+                    interval={0}
+                  />
+                  <YAxis reversed={true} hide={true} />
+                </LineChart>
+              </ResponsiveContainer>
+            </Segment>
+          </RankChartContainer>
+        ) : null}
       </TraineeContainer>
     );
   }
@@ -287,6 +361,13 @@ const TraineeLabel = ({
       </Label>
     ) : null}
   </TraineeLabelContainer>
+);
+
+const CustomizedRankLabel = ({ x, y, stroke, value, t }) => (
+  <text x={x} y={y} dy={-10} fill={stroke} fontSize={12} textAnchor="middle">
+    {value}
+    {t('rank')}
+  </text>
 );
 
 export default withNamespaces('translation')(Trainee);

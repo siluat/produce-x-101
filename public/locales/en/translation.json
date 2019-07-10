@@ -27,6 +27,9 @@
   "playCount": "Views",
   "comments": "Comments",
   "namePlaceHolder": "Name",
+  "rank": "",
+  "week": "w",
+  "weekly-rank-chart": "Official Weekly Rank",
   "changelog": {
     "20190507": {
       "1": "Add Dear 101 Rank",
