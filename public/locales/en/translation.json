@@ -5,6 +5,7 @@
     "x1ma": "X1-MA Naver TV Rank",
     "group": "Group X Battle Naver TV Rank",
     "position": "Position Evaluation Naver TV Rank",
+    "concept": "Concept Evaluation Naver TV Rank",
     "changelog": "Changelog"
   },
   "update": {
@@ -39,6 +40,9 @@
     },
     "20190611": {
       "1": "Add Position Evaluation Naver TV Rank"
+    },
+    "20190710": {
+      "1": "Add Concept Evaluation Naver TV Rank"
     }
   },
   "system": {

@@ -13,22 +13,21 @@ const PATH_FETCH =
   'https://7orvtlfpoh.execute-api.ap-northeast-2.amazonaws.com/default/scan-produce-x-101';
 
 const SORTS = {
-  LIKE: list => sortBy(list, 'positionLike').reverse(),
-  VIEW: list => sortBy(list, 'positionView').reverse(),
-  COMMENT: list => sortBy(list, 'positionComment').reverse(),
+  LIKE: list => sortBy(list, 'conceptLike').reverse(),
+  VIEW: list => sortBy(list, 'conceptView').reverse(),
+  COMMENT: list => sortBy(list, 'conceptComment').reverse(),
 };
 
-const positionFilter = item => {
-  return item.positionDirectCamUrl;
+const conceptFilter = item => {
+  return item.conceptDirectCamUrl;
 };
 
-class PositionDirectCamRanking extends Component {
+class ConceptDirectCamRanking extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       traineeData: [],
-      rank: 1,
       maxLike: 0,
       maxView: 0,
       maxComment: 0,
@@ -75,9 +74,9 @@ class PositionDirectCamRanking extends Component {
     this.setState({
       traineeData: data,
       isLoading: false,
-      maxLike: maxBy(data, 'positionLike').positionLike,
-      maxView: maxBy(data, 'positionView').positionView,
-      maxComment: maxBy(data, 'positionComment').positionComment,
+      maxLike: maxBy(data, 'conceptLike').conceptLike,
+      maxView: maxBy(data, 'conceptView').conceptView,
+      maxComment: maxBy(data, 'conceptComment').conceptComment,
     });
   }
 
@@ -122,7 +121,7 @@ class PositionDirectCamRanking extends Component {
         <Message
           style={{ textAlign: 'center' }}
           attached
-          header={t('menu.position')}
+          header={t('menu.concept')}
           content={t('update.every20Minutes')}
         />
         <Sticky context={contextRef} offset={40}>
@@ -138,26 +137,26 @@ class PositionDirectCamRanking extends Component {
           <LoadingContent />
         ) : (
           <FlipMove>
-            {SORTS[sortKey](traineeData.filter(positionFilter)).map(trainee => {
+            {SORTS[sortKey](traineeData.filter(conceptFilter)).map(trainee => {
               let value, max;
               switch (sortKey) {
                 case 'VIEW':
-                  value = trainee.positionView;
+                  value = trainee.conceptView;
                   max = maxView;
                   break;
                 case 'COMMENT':
-                  value = trainee.positionComment;
+                  value = trainee.conceptComment;
                   max = maxComment;
                   break;
                 default:
-                  value = trainee.positionLike;
+                  value = trainee.conceptLike;
                   max = maxLike;
               }
               return (
                 <div key={trainee.id}>
                   <Trainee
                     trainee={trainee}
-                    videoLink={trainee.positionDirectCamUrl}
+                    videoLink={trainee.conceptDirectCamUrl}
                     partialRank={partialRank++}
                   >
                     <ProgressBar
@@ -214,4 +213,4 @@ const MenuBar = ({
   </Menu>
 );
 
-export default withNamespaces('translation')(PositionDirectCamRanking);
+export default withNamespaces('translation')(ConceptDirectCamRanking);

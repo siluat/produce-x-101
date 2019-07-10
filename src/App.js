@@ -15,6 +15,7 @@ import Dear101 from './components/Dear101';
 import X1MaDirectCamRank from './components/X1MaDirectCamRank';
 import GroupDirectCamRank from './components/GroupDirectCamRank';
 import PositionDirectCamRank from './components/PositionDirectCamRank';
+import ConceptDirectCamRank from './components/ConceptDirectCamRank';
 import ChangeLog from './components/ChangeLog';
 import NoMatch from './components/NoMatch';
 import CrawlerStatus from './components/CrawlerStatus';
@@ -48,6 +49,9 @@ class App extends Component {
                 <Dropdown.Menu>
                   <Dropdown.Item href="/dear101">
                     {t('menu.dear101')}
+                  </Dropdown.Item>
+                  <Dropdown.Item href="/concept">
+                    {t('menu.concept')}
                   </Dropdown.Item>
                   <Dropdown.Item href="/position">
                     {t('menu.position')}
@@ -104,7 +108,7 @@ class App extends Component {
               exact
               path="/"
               render={props => (
-                <Redirect to={{ pathname: '/position' }} {...props} />
+                <Redirect to={{ pathname: '/dear101' }} {...props} />
               )}
             />
             <Route
@@ -126,6 +130,11 @@ class App extends Component {
               exact
               path="/position"
               render={props => <PositionDirectCamRank {...props} />}
+            />
+            <Route
+              exact
+              path="/concept"
+              render={props => <ConceptDirectCamRank {...props} />}
             />
             <Route exaxt path="/changelog" component={ChangeLog} />
             <Route exaxt path="/status" component={CrawlerStatus} />
