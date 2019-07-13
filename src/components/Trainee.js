@@ -144,6 +144,7 @@ class Trainee extends Component {
       { name: '5' + t('week'), rank: trainee.week4Rank },
       { name: '6' + t('week'), rank: trainee.week6Rank },
       { name: '8' + t('week'), rank: trainee.week8Rank },
+      { name: '11' + t('week'), rank: trainee.week11Rank },
     ];
 
     return (
