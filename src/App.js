@@ -18,7 +18,6 @@ import PositionDirectCamRank from './components/PositionDirectCamRank';
 import ConceptDirectCamRank from './components/ConceptDirectCamRank';
 import ChangeLog from './components/ChangeLog';
 import NoMatch from './components/NoMatch';
-import CrawlerStatus from './components/CrawlerStatus';
 
 import './styles/important.css';
 
@@ -137,7 +136,6 @@ class App extends Component {
               render={props => <ConceptDirectCamRank {...props} />}
             />
             <Route exaxt path="/changelog" component={ChangeLog} />
-            <Route exaxt path="/status" component={CrawlerStatus} />
             <Route render={props => <NoMatch {...props} />} />
           </Switch>
           <Footer />
