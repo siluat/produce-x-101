@@ -145,6 +145,7 @@ class Trainee extends Component {
       { name: '6' + t('week'), rank: trainee.week6Rank },
       { name: '8' + t('week'), rank: trainee.week8Rank },
       { name: '11' + t('week'), rank: trainee.week11Rank },
+      { name: '12' + t('week'), rank: trainee.week12Rank },
     ];
 
     return (
@@ -202,7 +203,7 @@ class Trainee extends Component {
                   />
                   <XAxis
                     dataKey="name"
-                    padding={{ left: 10, right: 10 }}
+                    padding={{ left: 15, right: 15 }}
                     fontSize="12px"
                     interval={0}
                   />
