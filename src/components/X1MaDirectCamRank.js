@@ -122,7 +122,7 @@ class X1maDirectCamRanking extends Component {
           style={{ textAlign: 'center' }}
           attached
           header={t('menu.x1ma')}
-          content={t('update.every20Minutes')}
+          content={t('update.last')}
         />
         <Sticky context={contextRef} offset={40}>
           <MenuBar

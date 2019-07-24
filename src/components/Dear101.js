@@ -152,7 +152,7 @@ class Dear101 extends Component {
           style={{ textAlign: 'center' }}
           attached
           header={t('menu.dear101')}
-          content={t('update.everyMidnight')}
+          content={t('update.last')}
         />
         <Sticky context={contextRef} offset={40}>
           <MenuBar

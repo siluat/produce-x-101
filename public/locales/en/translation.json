@@ -12,7 +12,8 @@
     "everyMidnight": "Updated every day at 00:00 KST",
     "every5Minutes": "Updated every 5 minutes.",
     "every10Minutes": "Updated every 10 minutes.",
-    "every20Minutes": "Updated every 20 minutes."
+    "every20Minutes": "Updated every 20 minutes.",
+    "last": "Last updated on 2019-07-19 24:00 KST"
   },
   "dear101": {
     "step": "{{value}}Step",
@@ -46,6 +47,9 @@
     },
     "20190710": {
       "1": "Add Concept Evaluation Naver TV Rank"
+    },
+    "20190719": {
+      "1": "Stop collecting data"
     }
   },
   "system": {
