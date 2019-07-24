@@ -10,8 +10,7 @@ import LoadingContent from './LoadingContent';
 import Trainee from './Trainee';
 import Dear101Data from './Dear101Data';
 
-const PATH_FETCH =
-  'https://7orvtlfpoh.execute-api.ap-northeast-2.amazonaws.com/default/scan-produce-x-101';
+const PATH_FETCH = 'data/trainees.json';
 
 const SORTS = {
   RATE: (list, selected) => {

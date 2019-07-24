@@ -9,8 +9,7 @@ import LoadingContent from './LoadingContent';
 import Trainee from './Trainee';
 import ProgressBar from './ProgressBar';
 
-const PATH_FETCH =
-  'https://7orvtlfpoh.execute-api.ap-northeast-2.amazonaws.com/default/scan-produce-x-101';
+const PATH_FETCH = 'data/trainees.json';
 
 const SORTS = {
   LIKE: list => sortBy(list, 'x1maLike').reverse(),
