@@ -58,25 +58,25 @@ const TraineeName = styled.span`
   padding: 0 5px;
 `;
 
-const RankUp = styled.span`
-  color: #f03e3e;
-  font-size: 13px;
-  i {
-    font-size: 11px;
-    margin-left: 2px;
-    margin-right: 0;
-  }
-`;
+// const RankUp = styled.span`
+//   color: #f03e3e;
+//   font-size: 13px;
+//   i {
+//     font-size: 11px;
+//     margin-left: 2px;
+//     margin-right: 0;
+//   }
+// `;
 
-const RankDown = styled.span`
-  color: #1864ab;
-  font-size: 13px;
-  i {
-    font-size: 11px;
-    margin-left: 2px;
-    margin-right: 0;
-  }
-`;
+// const RankDown = styled.span`
+//   color: #1864ab;
+//   font-size: 13px;
+//   i {
+//     font-size: 11px;
+//     margin-left: 2px;
+//     margin-right: 0;
+//   }
+// `;
 
 const PartialRank = styled.span`
   position: absolute;

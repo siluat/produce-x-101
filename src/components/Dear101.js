@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Select from 'react-select';
 import axios from 'axios';
 import { Icon, Message, Menu, Sticky } from 'semantic-ui-react';
 import { chain, find } from 'lodash';
@@ -137,7 +136,6 @@ class Dear101 extends Component {
 
     const {
       traineeData,
-      traineeSelection,
       traineeSelected,
       selectedMenu,
       sortKey,
